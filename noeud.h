@@ -15,6 +15,7 @@
 #define NOEUD_HEADER_H
 
 enum NodeType{LOGEMENT, TRANSPORT, PRODUCTION};
+
  
 class Noeud 
 { 
@@ -39,6 +40,7 @@ public :
 	points get_centre() const;
 	void set_centre(double x,double y);
 	double get_rayon() const;
+	void set_nbp(double new_nbp);
 	void set_rayon(double new_rayon);
 	bool get_in() const;
 	void set_in(bool new_in);
@@ -50,10 +52,10 @@ public :
 	bool test_max_link();	
 	bool test_max_capacity() ;
 	bool test_min_capacity();		
-	void test_noeud(bool& erreur);	
+	std::string test_noeud();	
 	void affichage_noeud(std::ofstream& fichier);	
-	virtual void draw_node()=0;
-	void draw_link_node();
+	virtual void draw_node(Color couleur)=0;
+	void draw_link_node(Color couleur);
 };
 
 class Noeud_logement: public Noeud
@@ -64,7 +66,7 @@ public:
 	Noeud_logement(unsigned int uid, double x, double y , double capacite);
 	~Noeud_logement();
 	NodeType get_type() const;
-	void draw_node();
+	void draw_node(Color couleur);
 };
 
 class Noeud_transport: public Noeud
@@ -75,7 +77,7 @@ public:
 	Noeud_transport(unsigned int uid, double x, double y , double capacite);
 	~Noeud_transport();
 	NodeType get_type() const;
-	void draw_node();
+	void draw_node(Color couleur);
 };
 
 class Noeud_production: public Noeud
@@ -86,28 +88,28 @@ public:
 	Noeud_production(unsigned int uid, double x, double y , double capacite);
 	~Noeud_production();
 	NodeType get_type() const;	
-	void draw_node();
+	void draw_node(Color couleur);
 };
 
 
-void test_superposition(const std::vector<Noeud*> city,double distance_ecart,
-						bool& erreur);
-void test_multiple_same_link(const std::vector<unsigned int> tab_lien, 
-							 const unsigned int noeud_1, const unsigned int noeud_2,
-							 bool& erreur);
+std::string test_superposition(const std::vector<Noeud*> city,double distance_ecart);
+std::string test_multiple_same_link(const std::vector<unsigned int> tab_lien, 
+							 const unsigned int noeud_1, const unsigned int noeud_2);
 							 
-void test_link_vacuum(const std::vector<Noeud*> city,const unsigned int noeud_1,
-					  const unsigned int noeud_2, bool& erreur);
+std::string test_link_vacuum(const std::vector<Noeud*> city,const unsigned int noeud_1,
+					  const unsigned int noeud_2);
 					  
-void boucle_max_link(const std::vector<unsigned int> tab_lien,
-					 const std::vector<Noeud*> city, int nb_node_l, bool& erreur);
-void test_self_link_node (const unsigned int& noeud_1, const unsigned int& noeud_2, 
-					      bool& erreur);
-void test_identical_uid(const double uid, const std::vector<Noeud*> city,bool& erreur);	
-void test_inter_cercle(const std::vector<Noeud*> city,Noeud* ville_noeud,
-					   size_t indice, double distance_ecart, bool& erreur);					   
-void test_inter_cercle_seg(const std::vector<Noeud*> city,Noeud* ville_noeud,
-						   double distance_ecart, bool& erreur);
+std::string boucle_max_link(const std::vector<unsigned int> tab_lien,
+							const std::vector<Noeud*> city, int nb_node_l);
+std::string test_one_node_max_link(Noeud* noeud);							
+std::string test_self_link_node (const unsigned int& noeud_1, 
+								 const unsigned int& noeud_2);
+std::string test_identical_uid(const double uid, const std::vector<Noeud*> city);	
+std::string test_inter_cercle(const std::vector<Noeud*> city,Noeud* ville_noeud,
+					   size_t indice, double distance_ecart);					   
+std::string test_inter_cercle_seg(const std::vector<Noeud*> city,Noeud* ville_noeud,
+						   double distance_ecart);
+//~ void gestion_erreur(int type_erreur);
 
 #endif
 

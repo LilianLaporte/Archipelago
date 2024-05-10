@@ -7,17 +7,17 @@ using namespace std;
 int main(int argc, char * argv[])
 {
 	int fake_argc = 1;
+	string erreur("");
 	
-	auto app = Gtk::Application::create(fake_argc, argv, "org.gtkmm.example");
-	    
+	auto app = Gtk::Application::create(fake_argc, argv);
+   
     Gui window;
-    window.set_default_size(800,800);
-    window.set_resizable(false);
     
 	if(argc == 2)
 	{
 		string nomfichier = argv[1];
-		(*export_lausanne()).lecture(nomfichier);
+		erreur = export_lausanne()->lecture(nomfichier);
+		window.affichage_erreur(erreur);
 	}
 	
 	window.set_label();
