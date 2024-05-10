@@ -1,6 +1,7 @@
 # Archipelago
 
-This repository has been created for the project of the course "Programmation" with <a href="https://people.epfl.ch/ronan.boulic">Prof. Ronan Boulic</a> in BA2. Due to a predicted rise in sea level, a city-state on the edge of the ocean decides to transform itself into a floating city. We have developed a tool to evaluate a city plan in which each district is a circular island and the districts are linked by floating bridges. Certain efficiency criteria are systematically evaluated.
+This repository has been created for the project of the course "Programmation" with <a href="https://people.epfl.ch/ronan.boulic">Prof. Ronan Boulic</a> in BA2.  
+Due to a predicted rise in sea level, a city-state on the edge of the ocean decides to transform itself into a floating city. We have developed a tool to evaluate a city plan in which each district is a circular island and the districts are linked by floating bridges. Certain efficiency criteria are systematically evaluated.
 
 ## Specifications
 
