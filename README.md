@@ -19,6 +19,6 @@ Due to a predicted rise in sea level, a city-state on the edge of the ocean deci
 ## Graphical User Interface (GUI)
 
 <p float="left">
-  <img src="img/g01.PNG" alt="g01" width="500"/>
-  <img src="img/g02.PNG" alt="g02" width="500"/>
+  <img src="img/g01.PNG" alt="g01" width="400"/>
+  <img src="img/g02.PNG" alt="g02" width="400"/>
 </p>
